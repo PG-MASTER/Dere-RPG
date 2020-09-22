@@ -30,7 +30,6 @@ class System:
 		openFile = open(saveName,'w')
 		openFile.write(jsonPlayerData)
 		openFile.close()
-		jsonPlayerData.close()
 
 	def LoadData(name):
 		saveName = 'Saves/'+name+'.JDere'
