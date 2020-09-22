@@ -35,7 +35,4 @@ def console(fight):
 		Player.Update.local(1)
 
 header(loaded)
-#console(0)
-
-System.LoadData('dere')
-Player.Update.local(1)
+console(0)
