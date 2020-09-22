@@ -30,12 +30,16 @@ class System:
 		openFile = open(saveName,'w')
 		openFile.write(jsonPlayerData)
 		openFile.close()
+		jsonPlayerData.close()
 
 	def LoadData(name):
 		saveName = 'Saves/'+name+'.JDere'
+		global rawData
 		with open(saveName, 'r') as rawData:
 			global pld
 			pld = json.load(rawData)
+			global nameVar
+			nameVar = name
 			rawData.close()
 
 	def CheckSave(name):
@@ -89,7 +93,19 @@ class Player:
 			return pld["deff"]
 
 	class Update:
-		def _UPDATE_():
-			return
+		global _UPDATE_
+
+		def _UPDATE_(up,value):
+			saveName = 'Saves/'+nameVar+'.JDere'
+			with open(saveName, 'r+') as rawData:
+				data = json.load(rawData)
+				data[up] = value
+				rawData.seek(0)
+				json.dump(data, rawData, indent=2)
+				rawData.close()
+
 		def local(upLocal):
-			return
+			_UPDATE_('local',upLocal)
+
+		def hp(hpUp):
+			_UPDATE_('hp',hpUp)
