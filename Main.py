@@ -31,6 +31,11 @@ def console(fight):
 	cl = input('Ação: ')
 	if 'new' in cl:
 		new()
+	if 'adm' in cl:
+		Player.Update.local(1)
 
 header(loaded)
-console(0)
+#console(0)
+
+System.LoadData('dere')
+Player.Update.local(1)
